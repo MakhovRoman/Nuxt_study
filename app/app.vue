@@ -10,6 +10,7 @@ import MyLink from "~/components/MyLink.vue";
               <ul class="menu menu-horizontal gap-5 menu-sm">
                   <MyLink link="/fetch" label="$fetch"/>
                   <MyLink link="/useFetch" label="useFetch"/>
+                  <MyLink link="/useAsyncData" label="useAsyncData"/>
               </ul>
           </div>
       </div>

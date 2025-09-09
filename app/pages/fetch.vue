@@ -12,8 +12,8 @@ const list = ref<User[]>([]);
 const count = ref(0);
 
 //TODO: закомментировать чтобы не вызывались при SSR
-const data = await fetchWithCount();
-list.value = data.slice(0, 3);
+// const data = await fetchWithCount();
+// list.value = data.slice(0, 3);
 
 async function fetchWithCount(): Promise<User[]> {
     count.value++;

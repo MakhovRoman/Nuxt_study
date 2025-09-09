@@ -6,7 +6,13 @@ const method = computed(() => otherParam.value > 2 ? 'POST' : 'GET');
 
 //TODO: когда Nuxt видит в useFetch реактивные источники, он автоматически следит
 //TODO: за их изменениями и перезапускает запрос
-const { data } = await useFetch('/api/result')
+const { data } = await useFetch('/api/result', {
+    query: {
+        page,
+        otherParam,
+    },
+    method,
+})
 
 function useOtherParam() {
     const otherParam = ref(1);
@@ -23,7 +29,7 @@ function useQuery() {
 
     const changeQuery = async (valueToAdd: number) => {
         await navigateTo({
-            path: '/useAsyncData',
+            path: '/useFetch',
             query: {
                 page: page.value + valueToAdd
             }
