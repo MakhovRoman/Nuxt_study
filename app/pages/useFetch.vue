@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const { otherParam, changeParams } = useOtherParam();
-const { page, changeQuery } = useQuery();
+const { page, changeQuery } = useQuery('/useFetch');
 
 const method = computed(() => otherParam.value > 2 ? 'POST' : 'GET');
 
@@ -13,31 +13,6 @@ const { data } = await useFetch('/api/result', {
     },
     method,
 })
-
-function useOtherParam() {
-    const otherParam = ref(1);
-    const changeParams = (valueToAdd: number) => {
-        otherParam.value += valueToAdd;
-    };
-
-    return { otherParam, changeParams };
-}
-
-function useQuery() {
-    const route = useRoute();
-    const page = computed(() => Number(route.query.page ?? 0));
-
-    const changeQuery = async (valueToAdd: number) => {
-        await navigateTo({
-            path: '/useFetch',
-            query: {
-                page: page.value + valueToAdd
-            }
-        })
-    }
-
-    return { page, changeQuery };
-}
 </script>
 
 <template>
